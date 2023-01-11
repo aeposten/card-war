@@ -1,5 +1,5 @@
 const newDeckBtn = selectComponent("deck-btn");
-
+const drawButton = selectComponent("draw-card-btn")
 let deckId = "";
 
 function selectComponent(elementId) {
@@ -8,6 +8,8 @@ function selectComponent(elementId) {
 }
 
 newDeckBtn.addEventListener("click", fetchDeck);
+drawButton.addEventListener("click", drawCards);
+
 
 function fetchDeck() {
   fetch("https://deckofcardsapi.com/api/deck/new/shuffle/")
@@ -18,3 +20,8 @@ function fetchDeck() {
     });
 }
 
+function drawCards() {
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+        .then((response) => response.json())
+        .then((data) => console.log(data.cards))
+}
