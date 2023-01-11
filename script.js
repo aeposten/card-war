@@ -14,6 +14,8 @@ function fetchDeck() {
 }
 
 
-setTimeout(() => {
+function callback() {
     console.log("I finally ran!")
-}, 2000)
+}
+
+setTimeout(callback, 2000)
