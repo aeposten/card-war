@@ -22,15 +22,20 @@ function fetchDeck() {
 
 
 const people = [
-    { name: "Jack", hasPet: true },
-    { name: "Jill", hasPet: false },
-    { name: "Alice", hasPet: true },
-    { name: "Bob", hasPet: false },
+    { name: "Jack", hasPet: true, age: 12 },
+    { name: "Jill", hasPet: false, age: 18 },
+    { name: "Alice", hasPet: true, age: 22 },
+    { name: "Bob", hasPet: false, age: 32 },
 ]
 
 function petOwners(person) {
    return person.hasPet
 }
-const petPeople = people.filter(petOwners)
 
-console.log(petPeople)
+function getAdults(person) {
+    return person.age >= 18;
+}
+
+const petPeople = people.filter(petOwners)
+const adults = people.filter(getAdults)
+
