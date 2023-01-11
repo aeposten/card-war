@@ -14,8 +14,23 @@ function fetchDeck() {
 }
 
 
-function callback() {
-    console.log("I finally ran!")
-}
+// function callback() {
+//     console.log("I finally ran!")
+// }
 
-setTimeout(callback, 2000)
+// setTimeout(callback, 2000)
+
+
+const people = [
+    { name: "Jack", hasPet: true },
+    { name: "Jill", hasPet: false },
+    { name: "Alice", hasPet: true },
+    { name: "Bob", hasPet: false },
+]
+
+function petOwners(person) {
+   return person.hasPet
+}
+const petPeople = people.filter(petOwners)
+
+console.log(petPeople)
