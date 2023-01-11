@@ -1,19 +1,20 @@
-// const newDeckBtn = selectComponent("deck-btn");
+const newDeckBtn = selectComponent("deck-btn");
 
-// function selectComponent(elementId) {
-//   let component = document.getElementById(elementId);
-//   return component;
-// }
+let deckId = "";
 
-// newDeckBtn.addEventListener("click", fetchDeck);
+function selectComponent(elementId) {
+  let component = document.getElementById(elementId);
+  return component;
+}
 
-// function fetchDeck() {
-//   fetch("https://deckofcardsapi.com/api/deck/new/shuffle/")
-//     .then((response) => response.json())
-//     .then((data) => console.log(data));
-// }
+newDeckBtn.addEventListener("click", fetchDeck);
 
+function fetchDeck() {
+  fetch("https://deckofcardsapi.com/api/deck/new/shuffle/")
+    .then((response) => response.json())
+    .then((data) => {
+      deckId = data.deck_id;
+      console.log(deckId)
+    });
+}
 
-document.getElementById("deck-btn").addEventListener("click", function() {
-    console.log("click")
-})
