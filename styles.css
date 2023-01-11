@@ -1,3 +1,33 @@
+/* font-family: 'Inter', sans-serif;
+font-family: 'Merriweather', serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Merriweather:wght@900&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: #186c51;
+    color: gold;
+    font-family: 'Inter', sans-serif;
+}
+main {
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Merriweather', serif; 
+}
 .card-img {
     width: 10em;
+}
+
+button {
+    background-color: gold;
+    border: none;
+    color:#186c51;
+    font-family: 'Merriweather', serif; 
+}
+
+.draw-card{
+    width:100%;
 }
