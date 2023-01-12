@@ -17,15 +17,26 @@ main {
 h1 {
     font-family: 'Merriweather', serif; 
 }
+
+.player-cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 50vw;
+}
+
 .card-img {
-    width: 10em;
+    width: 5em;
 }
 
 button {
+    padding: 1em;
     background-color: gold;
     border: none;
     color:#186c51;
     font-family: 'Merriweather', serif; 
+    cursor: pointer;
 }
 
 .draw-card{
