@@ -4,6 +4,7 @@ const cardsEl = selectComponent("player-cards");
 
 let deckId;
 let playerCards;
+let players = [];
 
 function selectComponent(elementId) {
   let component = document.getElementById(elementId);
@@ -32,10 +33,12 @@ function drawCards() {
     .then((data) => {
       playerCards = data.cards;
       renderCards(playerCards);
+      determineWinner(playerCards);
     });
 }
 
 function renderCards(cardsArray) {
+  console.log("rendering");
   cardsEl.innerHTML = cardsArray
     .map(
       ({ image, value, suit }, index) => `
@@ -46,4 +49,47 @@ function renderCards(cardsArray) {
     `
     )
     .join("");
+}
+
+function determineWinner(cards) {
+  let card1 = cards[0].value;
+  const card1Value = determineCardValue(card1);
+  let card2 = cards[1].value;
+  const card2Value = determineCardValue(card2);
+
+  if (card1Value > card2Value) {
+    console.log("Player 1 wins!");
+  } else if (card2Value > card1Value) {
+    console.log("Player 2 wins!");
+  } else {
+    console.log("It's a tie!");
+  }
+}
+
+function determineCardValue(card) {
+  let cardValue;
+
+  const cardsArray = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "JACK",
+    "QUEEN",
+    "KING",
+    "ACE",
+  ];
+
+  for (let i = 0; i < cardsArray.length; i++) {
+    if (cardsArray[i] === card) {
+      cardValue = i;
+      break;
+    }
+  }
+  return cardValue;
 }
