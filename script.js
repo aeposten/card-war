@@ -2,6 +2,7 @@ const newDeckBtn = document.getElementById("deck-btn");
 const drawButton = document.getElementById("draw-card-btn");
 const cardsEl = document.getElementById("player-cards");
 const winnerEl = document.getElementById("winner");
+const remainingEl = document.getElementById("remaining-cards");
 
 let deckId;
 let playerCards;
@@ -27,6 +28,7 @@ function drawCards() {
     .then((response) => response.json())
     .then((data) => {
       playerCards = data.cards;
+      renderRemainingCards(data);
       renderCards(playerCards);
       renderWinnerMessage();
     });
@@ -37,12 +39,16 @@ function renderCards(cardsArray) {
     .map(
       ({ image, value, suit }, index) => `
         <div class="player-${index + 1}">
-        <h3>Player ${index + 1}</h3>
+        <h3>${index === 0 ? "Computer" : "You"}</h3>
         <img class="card-img" src=${image}  alt="${value} of ${suit}"/>
         </div>
     `
     )
     .join("");
+}
+
+function renderRemainingCards(deckData) {
+  remainingEl.textContent = `Cards Remaining: ${deckData.remaining}`;
 }
 
 function renderWinnerMessage() {
@@ -57,11 +63,11 @@ function determineWinnerMessage(cards) {
   let winnerMessage = "";
 
   if (card1Value > card2Value) {
-    winnerMessage = "Player 1 wins!";
+    winnerMessage = "Computer Wins!";
   } else if (card2Value > card1Value) {
-    winnerMessage = "Player 2 wins!";
+    winnerMessage = "You Win!";
   } else {
-    winnerMessage = "It's a tie!";
+    winnerMessage = "War!";
   }
 
   return winnerMessage;

@@ -10,6 +10,17 @@ body{
     color: gold;
     font-family: 'Inter', sans-serif;
 }
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 main {
     margin: 0;
 }
