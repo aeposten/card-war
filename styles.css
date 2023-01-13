@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Merriweather:wght@900&display=swap');
 
+/* General formatting for the body */
 body{
     display: flex;
     flex-direction: column;
@@ -8,6 +9,7 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
+/* General formattingfor the header */
 header {
     display: flex;
     flex-direction: column;
@@ -23,6 +25,7 @@ main {
     margin: 0;
 }
 
+/* Typography for headings */
 h1 {
     font-family: 'Merriweather', serif; 
     text-align: center;
@@ -39,10 +42,13 @@ h3 {
     margin: 0.5em 0;
 }
 
+
+/* Formatting for player scors */
 .player-score, .remaining-cards {
     font-size: 0.75rem;
 }
 
+/* Formatting for cards */
 .player-cards {
     width: 100%;
     min-height: 50vw;
@@ -57,6 +63,7 @@ h3 {
     width: 30vw;
 }
 
+/* Formatting for buttons */
 button {
     padding: 1em 1.5em;
     background-color: gold;
