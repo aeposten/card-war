@@ -3,6 +3,13 @@ const drawButton = document.getElementById("draw-card-btn");
 const cardsEl = document.getElementById("player-cards");
 const winnerEl = document.getElementById("winner");
 const remainingEl = document.getElementById("remaining-cards");
+const playerScoreEl = document.getElementById("player-score");
+const computerScoreEl = document.getElementById("computer-score");
+
+let winnerMessage = "";
+
+let computerScore = 0;
+let playerScore = 0;
 
 let deckId;
 let playerCards;
@@ -32,6 +39,8 @@ function drawCards() {
       renderRemainingCards(data);
       renderCards(playerCards);
       renderWinnerMessage();
+      incrementScore(winnerMessage);
+      renderScores(playerScore, computerScore);
     });
 }
 
@@ -63,12 +72,24 @@ function renderWinnerMessage() {
   winnerEl.textContent = determineWinnerMessage(playerCards);
 }
 
+function renderScores(playerScore, computerScore) {
+  playerScoreEl.textContent = `Player: ${playerScore}`;
+  computerScoreEl.textContent = `Computer: ${computerScore}`;
+}
+
+function incrementScore(winnerMessage) {
+  if (winnerMessage === "Computer Wins!") {
+    computerScore++;
+  } else if (winnerMessage === "You Win!") {
+    playerScore++;
+  }
+}
+
 function determineWinnerMessage(cards) {
   let card1 = cards[0].value;
   const card1Value = determineCardValue(card1);
   let card2 = cards[1].value;
   const card2Value = determineCardValue(card2);
-  let winnerMessage = "";
 
   if (card1Value > card2Value) {
     winnerMessage = "Computer Wins!";
