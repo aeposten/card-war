@@ -64,6 +64,12 @@ button {
     cursor: pointer;
 }
 
+.disabled {
+    background-color: lightgray;
+    color: white;
+    cursor: not-allowed;
+}
+
 .draw-card{
     width:100%;
 }

@@ -16,6 +16,7 @@ function fetchDeck() {
     .then((data) => {
       deckId = data.deck_id;
       localStorage.setItem("deckId", deckId);
+      renderRemainingCards(data);
     });
 }
 
@@ -48,6 +49,13 @@ function renderCards(cardsArray) {
 }
 
 function renderRemainingCards(deckData) {
+  if (deckData.remaining === 0) {
+    drawButton.disabled = true;
+    drawButton.classList.add("disabled");
+  } else {
+    drawButton.disabled = false;
+    drawButton.classList.remove("disabled");
+  }
   remainingEl.textContent = `Cards Remaining: ${deckData.remaining}`;
 }
 
