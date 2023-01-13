@@ -1,15 +1,10 @@
-const newDeckBtn = selectComponent("deck-btn");
-const drawButton = selectComponent("draw-card-btn");
-const cardsEl = selectComponent("player-cards");
+const newDeckBtn = document.getElementById("deck-btn");
+const drawButton = document.getElementById("draw-card-btn");
+const cardsEl = document.getElementById("player-cards");
+const winnerEl = document.getElementById("winner");
 
 let deckId;
 let playerCards;
-let players = [];
-
-function selectComponent(elementId) {
-  let component = document.getElementById(elementId);
-  return component;
-}
 
 newDeckBtn.addEventListener("click", fetchDeck);
 drawButton.addEventListener("click", drawCards);
@@ -33,12 +28,11 @@ function drawCards() {
     .then((data) => {
       playerCards = data.cards;
       renderCards(playerCards);
-      determineWinner(playerCards);
+      renderWinnerMessage();
     });
 }
 
 function renderCards(cardsArray) {
-  console.log("rendering");
   cardsEl.innerHTML = cardsArray
     .map(
       ({ image, value, suit }, index) => `
@@ -51,19 +45,26 @@ function renderCards(cardsArray) {
     .join("");
 }
 
-function determineWinner(cards) {
+function renderWinnerMessage() {
+  winnerEl.textContent = determineWinnerMessage(playerCards);
+}
+
+function determineWinnerMessage(cards) {
   let card1 = cards[0].value;
   const card1Value = determineCardValue(card1);
   let card2 = cards[1].value;
   const card2Value = determineCardValue(card2);
+  let winnerMessage = "";
 
   if (card1Value > card2Value) {
-    console.log("Player 1 wins!");
+    winnerMessage = "Player 1 wins!";
   } else if (card2Value > card1Value) {
-    console.log("Player 2 wins!");
+    winnerMessage = "Player 2 wins!";
   } else {
-    console.log("It's a tie!");
+    winnerMessage = "It's a tie!";
   }
+
+  return winnerMessage;
 }
 
 function determineCardValue(card) {
