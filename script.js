@@ -17,36 +17,33 @@ let playerCards;
 newDeckBtn.addEventListener("click", fetchDeck);
 drawButton.addEventListener("click", drawCards);
 
-function fetchDeck() {
-  fetch("https://deckofcardsapi.com/api/deck/new/shuffle/")
-    .then((response) => response.json())
-    .then((data) => {
-      deckId = data.deck_id;
-      computerScore = 0;
-      playerScore = 0;
-      renderScores(playerScore, computerScore);
-      cardsEl.textContent = "";
-      winnerEl.textContent = "";
-      localStorage.setItem("deckId", deckId);
-      renderRemainingCards(data);
-    });
+async function fetchDeck() {
+  const response = await fetch(
+    "https://deckofcardsapi.com/api/deck/new/shuffle/"
+  );
+  const data = await response.json();
+
+  deckId = data.deck_id;
+  resetElements();
+  renderScores(playerScore, computerScore);
+  localStorage.setItem("deckId", deckId);
+  renderRemainingCards(data);
 }
 
-function drawCards() {
-  fetch(
+async function drawCards() {
+  const response = await fetch(
     `https://deckofcardsapi.com/api/deck/${localStorage.getItem(
       "deckId"
     )}/draw/?count=2`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      playerCards = data.cards;
-      renderRemainingCards(data);
-      renderCards(playerCards);
-      renderWinnerMessage(data);
-      incrementScore(winnerMessage);
-      renderScores(playerScore, computerScore);
-    });
+  );
+  const data = await response.json();
+
+  playerCards = data.cards;
+  renderRemainingCards(data);
+  renderCards(playerCards);
+  renderWinnerMessage(data);
+  incrementScore(winnerMessage);
+  renderScores(playerScore, computerScore);
 }
 
 function renderCards(cardsArray) {
@@ -131,4 +128,12 @@ function determineCardValue(card) {
     }
   }
   return cardValue;
+}
+
+function resetElements() {
+  cardsEl.textContent = "";
+  winnerEl.textContent = "";
+  computerScore = 0;
+  playerScore = 0;
+  return playerScore, computerScore;
 }

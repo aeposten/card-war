@@ -19,6 +19,7 @@ header {
 .header-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 main {
@@ -39,6 +40,10 @@ h2 {
 h3 {
     text-align: center;
     margin: 0.5em 0;
+}
+
+.player-score, .remaining-cards {
+    font-size: 0.75rem;
 }
 
 .player-cards {
