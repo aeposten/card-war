@@ -25,8 +25,8 @@ function fetchDeck() {
       computerScore = 0;
       playerScore = 0;
       renderScores(playerScore, computerScore);
-      cardsEl.textContent = ""
-      winnerEl.textContent = ""
+      cardsEl.textContent = "";
+      winnerEl.textContent = "";
       localStorage.setItem("deckId", deckId);
       renderRemainingCards(data);
     });
@@ -43,7 +43,7 @@ function drawCards() {
       playerCards = data.cards;
       renderRemainingCards(data);
       renderCards(playerCards);
-      renderWinnerMessage();
+      renderWinnerMessage(data);
       incrementScore(winnerMessage);
       renderScores(playerScore, computerScore);
     });
@@ -73,8 +73,15 @@ function renderRemainingCards(deckData) {
   remainingEl.textContent = `Cards Remaining: ${deckData.remaining}`;
 }
 
-function renderWinnerMessage() {
+function renderWinnerMessage(deckData) {
   winnerEl.textContent = determineWinnerMessage(playerCards);
+  if (deckData.remaining === 0) {
+    if (playerScore > computerScore) {
+      winnerEl.textContent = "Player wins it all!";
+    } else {
+      winnerEl.textContent = "Computer wins it all!";
+    }
+  }
 }
 
 function renderScores(playerScore, computerScore) {
@@ -110,20 +117,11 @@ function determineWinnerMessage(cards) {
 function determineCardValue(card) {
   let cardValue;
 
+  //prettier-ignore
   const cardsArray = [
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "JACK",
-    "QUEEN",
-    "KING",
-    "ACE",
+    "2", "3", "4", "5", "6", "7",
+    "8", "9", "10", "JACK", "QUEEN",
+    "KING", "ACE",
   ];
 
   for (let i = 0; i < cardsArray.length; i++) {
