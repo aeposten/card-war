@@ -1,88 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Merriweather:wght@900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Merriweather:wght@900&display=swap");
 
 /* General formatting for the body */
-body{
-    display: flex;
-    flex-direction: column;
-    background-color: #186c51;
-    color: gold;
-    font-family: 'Inter', sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #186c51;
+  color: gold;
+  font-family: "Inter", sans-serif;
 }
 
 /* General formattingfor the header */
 header {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 main {
-    margin: 0;
+  margin: 0;
 }
 
 /* Typography for headings */
 h1 {
-    font-family: 'Merriweather', serif; 
-    text-align: center;
+  font-family: "Merriweather", serif;
+  text-align: center;
 }
 
 h2 {
-    margin: 0.25em 0;
-    text-align: center;
-    font-family: 'Merriweather', serif; 
+  margin: 0.25em 0;
+  text-align: center;
+  font-family: "Merriweather", serif;
 }
 
 h3 {
-    text-align: center;
-    margin: 0.5em 0;
+  text-align: center;
+  margin: 0.5em 0;
 }
 
-
 /* Formatting for player scors */
-.player-score, .remaining-cards {
-    font-size: 0.75rem;
+.player-score,
+.remaining-cards {
+  font-size: 0.75rem;
 }
 
 /* Formatting for cards */
 .player-cards {
-    width: 100%;
-    min-height: 50vw;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 2em 0;
-
+  width: 100%;
+  min-height: 50vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2em 0;
 }
 
-.card-img{
-    width: 30vw;
+.card-img {
+  width: 30vw;
 }
 
 /* Formatting for buttons */
 button {
-    padding: 1em 1.5em;
-    background-color: gold;
-    border: none;
-    color:#186c51;
-    font-family: 'Merriweather', serif; 
-    cursor: pointer;
+  padding: 1em 1.5em;
+  background-color: gold;
+  border: none;
+  color: #186c51;
+  font-family: "Merriweather", serif;
+  cursor: pointer;
 }
 
-button:hover, button:focus {
-    text-decoration: underline;
+button:hover,
+button:focus {
+  text-decoration: underline;
 }
 
-.draw-card{
-    width:100%;
+.draw-card {
+  width: 100%;
 }
 
 .disabled {
-    background-color: lightgray;
-    color: white;
-    cursor: not-allowed;
+  background-color: lightgray;
+  color: white;
+  cursor: not-allowed;
 }
