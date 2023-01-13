@@ -22,6 +22,11 @@ function fetchDeck() {
     .then((response) => response.json())
     .then((data) => {
       deckId = data.deck_id;
+      computerScore = 0;
+      playerScore = 0;
+      renderScores(playerScore, computerScore);
+      cardsEl.textContent = ""
+      winnerEl.textContent = ""
       localStorage.setItem("deckId", deckId);
       renderRemainingCards(data);
     });
